@@ -22,6 +22,19 @@ db.once('open', function() {
 });
 
 
+//Stripe
+// Set your secret key. Remember to switch to your live secret key in production!
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+const stripe = require('stripe')('sk_test_ai2YEpuhM75MambznoGPHuks00F75ol1FW');
+
+const customer = stripe.customers.create({
+  name: 'david le',
+  email: 'david.le@example.com',
+  description: 'testing'
+});
+
+console.log(customer);
+
 app.get("*", (req, res) => {
   res.sendFile('index.html', {
     root
