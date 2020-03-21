@@ -1,0 +1,39 @@
+/* .btn btn-secondary btn-lg btn-block {
+    margin-left:500px;
+
+
+} */
+
+
+.thead-dark {
+  text-align: center;
+}
+
+table {
+    text-align: center;
+}
+
+.col-4 {
+    text-align: center;
+}
+
+.shoppinglistbutton {
+    float: left;
+}
+
+.text {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 75px;
+}
+
+/* .jumbotron text-center {
+    padding-top: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 50px;
+} */
+
+.display-4 {
+font-size: 2.5rem;
+}
