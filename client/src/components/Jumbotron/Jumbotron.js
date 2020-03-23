@@ -8,11 +8,11 @@ const Jumbotron = () => {
     return (
         <div className="jumbotron text-center">
             <h1 className="display-4">Smart Shopper</h1>
-                <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <p className="lead">Welcome to Smart Shopper, the smartest way to shop for groceries with friends, family and groups who have to share food!</p>
             <hr className="my-4" />
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a className="btn btn-primary btn-lg" style={style} href="#" role="button">Log In</a>
-            <a className="btn btn-primary btn-lg" style={style} href="#" role="button">Sign Up</a>
+                <p>Let Smart Shopper settle your grocery bills for you!</p>
+            <a className="btn btn-primary btn-lg" style={style} href="/login" role="button">Log In</a>
+            <a className="btn btn-primary btn-lg" style={style} href="/signup" role="button">Sign Up</a>
         </div>
     )
 }
