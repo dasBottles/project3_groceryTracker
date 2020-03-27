@@ -31,9 +31,13 @@ const ListDisplay = (props) => {
     />
   ))
   return (
+    <div>
     <ul>
       {items}
     </ul>
+
+    <div> </div>
+    </div>
   )
 }
 

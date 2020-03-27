@@ -12,6 +12,8 @@ app.use(express.json());
 const root = require('path').join(__dirname, 'client', 'build')
 app.use(express.static(root));
 
+const itemRouter = require('./routes/item'); 
+
 
 // Mongoose
 mongoose.connect("mongodb://user:password1@ds111565.mlab.com:11565/heroku_4m970fc5", { useNewUrlParser: true });
