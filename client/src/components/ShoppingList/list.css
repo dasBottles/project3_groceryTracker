@@ -3,11 +3,13 @@
   #list-container {
     width: 400px;
     margin: auto;
+    background: lightgrey;
   }
   
   #list-container ul {
     padding: 0;
     list-style: none;
+    background: lightgrey;
   }
   
   #list-container ul li {

@@ -1,3 +1,7 @@
 body {
     background: url('../images/shopping_cart_PNG62.png')
 }
+
+.container {
+    background-color: lightgrey;
+}
