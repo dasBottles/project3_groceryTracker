@@ -1,37 +1,49 @@
 import React, { useState } from 'react';
 import '../Payment/style.css'
+import StripeCheckout from 'react-stripe-checkout';
 
 const Payment = () => {
-    return (
-        <div className="container">
- <div class="jumbotron text-center">
-            <h1 class="display-4">Payment API</h1>
-            <br>
-            </br>
-            <h3>Choose Your Payment Method</h3>
-        </div>
-        <div class="container">
-            <form>
-                <div class="form-groupz">
-                  <label for="formGroupExampleInput">Credit Card</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Credit Card Information"></input>
-                </div>
-                <br>
-                </br>
-                <div class="form-groupz">
-                  <label for="formGroupExampleInput2">Expiration Date</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="MM/YY"></input>
-                </div>
-              </form>
-          </div>
-          <br></br>
-          <button type="submit" class="btn btn-dark submit">Settle Grocery Bill</button> 
-          <div class="container text-center">
-      
-        </div>
-    </div>
 
-    )
+  const [product, setProduct] = useState({
+    name: 'react',
+    price: 10,
+    productBy: 'Facebook'
+  })
+  
+  const makePayment = token => {
+    const body = {
+      token,
+      product
+    }
+    const header = {
+      'Content-Type': 'application/json'
+    }
+
+    return fetch('http://localhost:3000/payment', {
+      method: 'POST',
+      header,
+      body: JSON.stringify(body)
+    })
+    .then(response => {
+      console.log(response)
+      const {status} = response;
+      console.log(status)
+    })
+    .catch(error => console.log(error))
+  }
+
+  return (
+    <div>
+        <StripeCheckout
+        stripeKey={process.env.STRIPE_PUBLIC_KEY || 'pk_test_iwJZkRcNGSzsRCT4LTkagub000XFwSXXvq'} 
+        token={makePayment}
+        amount= {product.price * 100}
+        name= {product.name}
+        >
+          <button className='btn-large blue'>Purchase for ${product.price}</button>
+        </StripeCheckout>
+    </div>
+  );
 }
 
 export default Payment;

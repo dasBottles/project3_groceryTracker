@@ -3,9 +3,11 @@ const express = require("express"),
  PORT = process.env.PORT || 3001,
  MONGD_URI = 'mongodb://user:password1@ds111565.mlab.com:11565/heroku_4m970fc5'
  app = express(),
- mongoose = require('mongoose')
- db = require('./models')
-
+ mongoose = require('mongoose'),
+ db = require('./models'),
+ cors = require('cors'),
+ uuid = require('uuid/v4'),
+ require('dotenv').config() 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,8 +18,6 @@ app.use(express.static(root));
 
 // Mongoose
 mongoose.connect(MONGD_URI, { useNewUrlParser: true });
-
-
 
 app.get("/item", function(req, res) {
   db.Item.find({}).then(function(docs) {
@@ -36,20 +36,45 @@ app.get("/item", function(req, res) {
 //Stripe
 // Set your secret key. Remember to switch to your live secret key in production!
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-const stripe = require('stripe')('sk_test_ai2YEpuhM75MambznoGPHuks00F75ol1FW');
+const StripSecretKey = process.env.STRIPE_PUBLIC_KEY
+const stripe = require('stripe')(StripSecretKey);
 
-const customer = stripe.customers.create({
-  name: 'david le',
-  email: 'david.le@example.com',
-  description: 'testing'
-});
-
-console.log(customer);
 
 app.get("*", (req, res) => {
   res.sendFile('index.html', {
     root
   });
+})
+
+app.post('/payment', (req, res) => {
+
+  const {product, token} = req.body
+  console.log('Product: ', product);
+  console.log('PRICE: ', product.price)
+  const idempontencyKey = uuid();
+
+  return stripe.customers
+  .create({
+    email: token.email,
+    source: token.id
+  })
+  .then(customer => {
+    stripe.charges.create({
+      amount: product.price * 100,
+      currency: 'usd',
+      customer: customer.id,
+      receipt_email: token.id,
+      description: `purchase of product.name`,
+      shipping: {
+        name: token.card.name,
+        address: {
+          country: token.card.address_country
+        }
+      }
+    }, {idempontencyKey})
+  })
+  .then(result => res.status(200).json(result))
+  .catch(err => console.log(err))
 })
 
 app.listen(PORT, () => {
