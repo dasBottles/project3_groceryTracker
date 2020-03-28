@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../Payment/style.css'
 
 const Payment = () => {
     return (
@@ -11,21 +12,21 @@ const Payment = () => {
         </div>
         <div class="container">
             <form>
-                <div class="form-group">
+                <div class="form-groupz">
                   <label for="formGroupExampleInput">Credit Card</label>
                   <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Credit Card Information"></input>
                 </div>
                 <br>
                 </br>
-                <div class="form-group">
-                  <label for="formGroupExampleInput2">Paypal Link</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Input Paypal Link"></input>
+                <div class="form-groupz">
+                  <label for="formGroupExampleInput2">Expiration Date</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="MM/YY"></input>
                 </div>
               </form>
           </div>
           <br></br>
+          <button type="submit" class="btn btn-dark submit">Settle Grocery Bill</button> 
           <div class="container text-center">
-          <button type="submit" class="btn btn-primary">Submit</button>
       
         </div>
     </div>

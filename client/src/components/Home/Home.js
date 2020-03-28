@@ -3,9 +3,11 @@ import Jumbotron from '../Jumbotron/Jumbotron'
 import '../../css/style.css'
 
 
+
 const Home = () => {
     return (
         <div className='container'>
+            
             <Jumbotron />
             
         </div>

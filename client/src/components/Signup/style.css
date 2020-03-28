@@ -1,0 +1,29 @@
+.soft {
+  position: relative;
+  left: 270px;
+  top: 20px;
+}
+
+button {
+  position: relative;
+  left: 0px;
+}
+
+.form-group {
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   
+    left: 100px;
+    color: black
+
+    
+}
+
+.form-control {
+    position: relative;
+    width: 500px;
+}
+
+h2 {
+  font-size: xx-large;
+}

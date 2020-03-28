@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import '../UserList/style.css'
 
 const UserList = () => {
     return (
         <div className="container">
 <div class="jumbotron text-center">
-          <h1 class="display-4">Individual List</h1>
+  <div></div>
+          <h1 class="display-3">Grocery List</h1>
      </div>
     <div>
       <table class="table">

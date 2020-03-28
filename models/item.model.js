@@ -6,6 +6,9 @@ var ItemSchema = new Schema({
     type: String,
     required: true
   }
+
+  
 });
 var item = mongoose.model("item", ItemSchema);
+
 module.exports = item;
