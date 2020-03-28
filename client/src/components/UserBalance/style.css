@@ -1,0 +1,22 @@
+.wets {
+    position: relative;
+    width: 500px;
+    bottom: 240px;
+    left: 250px;
+}
+
+.display1 {
+    position: relative;
+    top: -10px;
+}
+
+.bill {
+    font-size: xx-large;
+    position: relative;
+    left: 180px
+}
+
+.input-group {
+    position: relative;
+    bottom:30px
+}

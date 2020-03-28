@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import itemList from '../Items/items';
 import './list.css';
 
 const App = () => {
   const [items, setItems] = useState([
-    "oranges", "apples", "candy"
+    ["oranges"], ["apples"], ["candy"]
   ]);
   return (
+    <div className="frog">
+      <h1 className="smell">Shopping Cart</h1>
     <div id="list-container">
       <ListDisplay items={items} handleClick={(item) => {
         setItems(items.slice().filter((i) => i !== item));
@@ -14,7 +17,13 @@ const App = () => {
           setItems(items.concat(item));
         }}
       />
+      <div>Total:</div>
+      <button type="submit" class="btn3 btn-dark">Settle Your Tab!</button>
+</div>
+    <div></div>
     </div>
+
+    
   )
 }
 
@@ -44,6 +53,7 @@ const ListDisplay = (props) => {
 const InputText = (props) => {
   const [value, setValue] = useState('')
   return (
+    <div className="hle">
     <form onSubmit={(e) => {
       e.preventDefault();
       props.handleSubmit(value);
@@ -51,6 +61,11 @@ const InputText = (props) => {
     }}>
       <input type="text" value={value} onChange={e => setValue(e.target.value)}/>
     </form>
+    </div>
+
+    
+
+
   )
 }
 

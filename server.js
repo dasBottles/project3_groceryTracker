@@ -1,6 +1,7 @@
 const express = require("express"),
  path = require("path"),
  PORT = process.env.PORT || 3001,
+ MONGD_URI = 'https://mongodb://user:password1@ds111565.mlab.com:11565/heroku_4m970fc5'
  app = express(),
  mongoose = require('mongoose')
  db = mongoose.connection;
@@ -12,16 +13,31 @@ app.use(express.json());
 const root = require('path').join(__dirname, 'client', 'build')
 app.use(express.static(root));
 
-const itemRouter = require('./routes/item'); 
-
 
 // Mongoose
-mongoose.connect("mongodb://user:password1@ds111565.mlab.com:11565/heroku_4m970fc5", { useNewUrlParser: true });
+mongoose.connect( process.env.PORT || 'https://mongodb://user:password1@ds111565.mlab.com:11565/heroku_4m970fc5', { useNewUrlParser: true });
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('connected to db')
+  
+  
+  
 });
+
+
+app.get("/item", function(req, res) {
+  db.collection(item).find({res}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed");
+    } else {
+      res.status(200).json(docs);
+    }
+    
+  });
+});
+
+
 
 
 //Stripe

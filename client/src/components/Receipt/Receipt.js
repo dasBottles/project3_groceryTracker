@@ -4,8 +4,7 @@ const Receipt = () => {
     return (
         <div className="container">
         <div class="jumbotron text-center">
-        <h1 class="display-4">Receipt Display for Joint Shopping List</h1>
-        <h6> Group Total is _____  </h6>
+        <h1 class="display-4">Receipt Display for Whole Group!</h1>
    </div>
   <div>
     <table class="table">
@@ -35,9 +34,10 @@ const Receipt = () => {
        
       </tbody>
     </table>
+        <h6> Group Total is _____  </h6>
     </div>
     <div>
-      <button type="button" class="btn btn-secondary btn-lg btn-block">Take me to Venmo!</button>
+
       </div>
     </div>
     )
