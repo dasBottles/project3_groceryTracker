@@ -1,10 +1,10 @@
 const express = require("express"),
  path = require("path"),
  PORT = process.env.PORT || 3001,
- MONGD_URI = 'https://mongodb://user:password1@ds111565.mlab.com:11565/heroku_4m970fc5'
+ MONGD_URI = 'mongodb://user:password1@ds111565.mlab.com:11565/heroku_4m970fc5'
  app = express(),
  mongoose = require('mongoose')
- db = mongoose.connection;
+ db = require('./models')
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -15,26 +15,19 @@ app.use(express.static(root));
 
 
 // Mongoose
-mongoose.connect( process.env.PORT || 'https://mongodb://user:password1@ds111565.mlab.com:11565/heroku_4m970fc5', { useNewUrlParser: true });
+mongoose.connect(MONGD_URI, { useNewUrlParser: true });
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('connected to db')
-  
-  
-  
-});
 
 
 app.get("/item", function(req, res) {
-  db.collection(item).find({res}).toArray(function(err, docs) {
-    if (err) {
-      handleError(res, err.message, "Failed");
-    } else {
+  db.Item.find({}).then(function(docs) {
+  console.log(docs)
       res.status(200).json(docs);
-    }
     
-  });
+  }).catch(err => {
+    console.log(err) 
+  })
+
 });
 
 
