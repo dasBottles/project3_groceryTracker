@@ -19,19 +19,39 @@ const UserList = () => {
         </thead>
         <tbody>
           <tr>
-            <th scope="row">______</th>
-            <td>______</td>
-            <td>______</td>
+            <th scope="row">Avocados</th>
+            <td>8</td>
+            <td>$12.00</td>
           </tr>
           <tr>
-            <th scope="row">______</th>
-            <td>______</td>
-            <td>______</td>
+            <th scope="row">Frozen Fries</th>
+            <td>1</td>
+            <td>$3.99</td>
           </tr>
           <tr>
-<th scope="row">______</th>
-            <td>______</td>
-            <td>______</td>
+            <th scope="row">Eggs</th>
+            <td>1</td>
+            <td>$2.99</td>
+          </tr>
+          <tr>
+            <th scope="row">Lobster</th>
+            <td>1</td>
+            <td>$18.99</td>
+          </tr>
+          <tr>
+            <th scope="row">Waffle Mix</th>
+            <td>1</td>
+            <td>$1.99</td>
+          </tr>
+          <tr>
+            <th scope="row">Rice</th>
+            <td>1</td>
+            <td>$2.99</td>
+          </tr>
+          <tr>
+          <th scope="row">Bags of Coffee</th>
+            <td>2</td>
+            <td>$8.00</td>
           </tr>
         </tbody>
       </table>
